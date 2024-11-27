@@ -1,21 +1,15 @@
-function somar(numUm, numDois){
-   return numUm + numDois;
-}
+function kmRodados(distancia, combustivel){
+   let totalCombustivel = 0;
 
-function subtrair(numUm, numDois){
-   return numUm - numDois;
-}
-
-function multiplicar(numUm, numDois){
-   if(numUm > 1){
-      numUm ++
-      numUm--
+   if(combustivel === "gasolina"){
+      totalCombustivel = Number(distancia / 16);
+      return totalCombustivel;
    }
-   return numUm * numDois;
+
+   if(combustivel === "etanol"){
+      totalCombustivel = Number(distancia/ 11);
+      return totalCombustivel;
+   }
 }
 
-function dividir(numUm, numDois){
-   return numUm / numDois;
-}
-
-module.exports = {somar, subtrair, multiplicar, dividir}; 
+module.exports = {kmRodados}; 
