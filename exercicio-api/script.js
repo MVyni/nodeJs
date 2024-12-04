@@ -1,9 +1,19 @@
 //PARA FAZER GET NA APIs
-function Get(){
+function get(){
     return fetch("https://api-generator.retool.com/RKozdT/data")
     .then((res) => res.json())
     .then((data) => console.log(data));    
 }
+
+//FAZENDO GET BY ID NA APIs
+async function getById(id){
+   const response = await fetch("https://api-generator.retool.com/RKozdT/data/" + id)
+   
+   
+   return response.json()
+   .then((res) => console.log(res));
+ }
+
 
 //PARA FAZER POST NA APIs
 async function postData(url = "https://api-generator.retool.com/RKozdT/data", data = "{}") {
@@ -64,9 +74,9 @@ putData("https://api-generator.retool.com/RKozdT/data", cep = {
 })
 
 //PARA FAZER UM DELETE NA APIs
-async function deleteData(url = "https://api-generator.retool.com/RKozdT/data", data= "{}"){
+async function deleteData(url = "", id){
 
-    const response = await fetch("https://api-generator.retool.com/RKozdT/data", {
+    const response = await fetch(url + id, {
         method: "DELETE",
         mode: "cors",
         cache: "no-cache",
@@ -76,12 +86,14 @@ async function deleteData(url = "https://api-generator.retool.com/RKozdT/data", 
         },
         redirect: "follow",
         referrerPolicy: "no-referrer",
-        body: JSON.stringify(data)
     })
     return response.json();
-}
-
-deleteData("https://api-generator.retool.com/RKozdT/data", cep)
-.then((res) => {
+ }
+ 
+ deleteData("https://api-generator.retool.com/RKozdT/data/", 20)
+ .then((res) => {
     console.log(res);
-});
+ });
+
+
+
